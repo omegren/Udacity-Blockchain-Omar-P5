@@ -41,11 +41,11 @@ const App = {
 
   // Implement Task 4 Modify the front end of the DAPP
   lookUp: async function (){
-  const instance = await StarNotary.deployed();
-  const id = document.getElementById("lookid").value;
-  const result = await instance.lookUptokenIdToStarInfo(id);
-  const text = document.getElementById('status');
-  text.value = result[0];
+    const { lookUptokenIdToStarInfo } = this.meta.methods;
+    const id = document.getElementById("lookid").value;
+    const result = await lookUptokenIdToStarInfo(id).call();
+    const text = document.getElementById('status');
+    text.innerText = result[0];
   }
 };
 
